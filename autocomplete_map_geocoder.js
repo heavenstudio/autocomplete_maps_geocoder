@@ -1,4 +1,4 @@
-function MapGeocoder(mapSelector, addressSelector, latSelector, lonSelector, initialLat, initialLon) {
+function AutocompleteMapGeocoder(mapSelector, addressSelector, latSelector, lonSelector, initialLat, initialLon) {
   this.initialPosition = new google.maps.LatLng(initialLat, initialLon);
   this.map = this.initializeMap(mapSelector);
   this.address = $(addressSelector);
@@ -11,7 +11,7 @@ function MapGeocoder(mapSelector, addressSelector, latSelector, lonSelector, ini
   this.autocompleteAddress();
 }
 
-MapGeocoder.prototype.initializeMap = function (mapSelector){
+AutocompleteMapGeocoder.prototype.initializeMap = function (mapSelector){
   var mapOptions = {
     center: this.initialPosition,
     zoom: 15,
@@ -20,22 +20,22 @@ MapGeocoder.prototype.initializeMap = function (mapSelector){
   return new google.maps.Map($(mapSelector)[0], mapOptions);
 }
 
-MapGeocoder.prototype.initializeMarker = function (){
+AutocompleteMapGeocoder.prototype.initializeMarker = function (){
   var marker = new google.maps.Marker({map: this.map, draggable: true});
   marker.setPosition(this.initialPosition);
   return marker;
 }
 
-MapGeocoder.prototype.setLatLon = function (latitude, longitude){
+AutocompleteMapGeocoder.prototype.setLatLon = function (latitude, longitude){
   this.latitude.val(latitude);
   this.longitude.val(longitude);
 }
 
-MapGeocoder.prototype.setAddress = function (address){
+AutocompleteMapGeocoder.prototype.setAddress = function (address){
   this.address.val(address);
 }
 
-MapGeocoder.prototype.setPosition = function (latitude, longitude){
+AutocompleteMapGeocoder.prototype.setPosition = function (latitude, longitude){
   var location = new google.maps.LatLng(latitude, longitude);
   this.setLatLon(latitude, longitude);
   this.marker.setPosition(location);
@@ -43,7 +43,7 @@ MapGeocoder.prototype.setPosition = function (latitude, longitude){
   this.map.setZoom(16);    
 }
 
-MapGeocoder.prototype.listenToDragEvents = function (){
+AutocompleteMapGeocoder.prototype.listenToDragEvents = function (){
   var _this = this;
   google.maps.event.addListener(this.marker, 'drag', function () {
     _this.geocoder.geocode({ 'latLng': _this.marker.getPosition() }, function (results, status) {
@@ -57,7 +57,7 @@ MapGeocoder.prototype.listenToDragEvents = function (){
   });
 }
 
-MapGeocoder.prototype.autocompleteAddress = function (){
+AutocompleteMapGeocoder.prototype.autocompleteAddress = function (){
   var _this = this;
   $("#address").autocomplete({
     source: function (request, response) {

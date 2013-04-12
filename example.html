@@ -16,7 +16,7 @@
     <script type="text/javascript" src="autocomplete_map_geocoder.js"></script>
     <script type="text/javascript">
       $(window).load(function(){
-        map = new MapGeocoder("#map-canvas", "#address", "#latitude", "#longitude", -23.548881, -46.638336);
+        map = new AutocompleteMapGeocoder("#map-canvas", "#address", "#latitude", "#longitude", -23.548881, -46.638336);
         $("form").on("submit", function(event){
           event.preventDefault();
           alert($(this).serialize());
