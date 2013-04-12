@@ -2,6 +2,8 @@
 
 Exemplo de uso da biblioteca: [http://autocompletemapgeocoder.herokuapp.com/](http://autocompletemapgeocoder.herokuapp.com/)
 
+Esta biblioteca depende de jQuery e jQuery-UI, e faz uso da função `$`
+
 Esta biblioteca fornece uma classe denominada AutocompleteMapsGeocoder, cujo objetivo é fornecer uma forma simples de obter a latitude e longitude de um endereço digitado. Este plugin faz uso do jquery autocomplete para fornecer opcões para autocompletar o endereço que um usuário digitar baseado nas respostas do google maps, e exibe o endereço selecionado no mapa.
 
 Além disso, também é possível que o usuário mova o marcador do endereço no mapa, e isso atualiza o endereço digitável.
