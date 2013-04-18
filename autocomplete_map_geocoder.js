@@ -59,7 +59,7 @@ AutocompleteMapGeocoder.prototype.listenToDragEvents = function (){
 
 AutocompleteMapGeocoder.prototype.autocompleteAddress = function (){
   var _this = this;
-  $("#address").autocomplete({
+  this.address.autocomplete({
     source: function (request, response) {
       _this.geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
         response($.map(results, function (item) {
